@@ -7,7 +7,8 @@ def read_template(path):
 def parse_template(text):
     x=re.sub("{.*?}","{}",text)
     y=re.findall(r"(?<=\{).+?(?=\})", text)
-    return (str(x),tuple(y))
+    z=tuple(y)
+    return (x,z)
 
 
 def merge(string,word):
@@ -17,15 +18,15 @@ def merge(string,word):
      f.write(statment)
     return statment
 
-print("wlcome to midlib game")
 
 answer=[]
-def start_game():
-    file=read_template("assets/user.txt")
+def game_function():
+    print("wlcome to midlib game")
+    file=read_template("assets/Madlib_text.txt")
     text,value=parse_template(file)
-    for item in value:
-        input_user=input(f"enter {item}")
+    for i in value:
+        input_user=input(f" enter {i} >>>>")
         answer.append(input_user)
     return merge(text,answer)
 if __name__== "__main__":
- start_game()
+ game_function()
